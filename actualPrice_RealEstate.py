@@ -117,7 +117,7 @@ def fn_filterstatistics(**kwargs):
 
     # 總車位數
     condition = df_all.transaction_sign.str.contains("車位", na=False)
-    df_car = pd.to_numeric(df_all[condition]["transaction_pen_number"].str.split("車位").str[1])
+    df_car = pd.to_numeric(df_all["transaction_pen_number"].str.split("車位").str[1])
     carCount = df_car.sum()
     print("總車位數: ", carCount)
 
@@ -127,7 +127,7 @@ def fn_filterstatistics(**kwargs):
 
     # 平均車位總價元
     condition = df_all.transaction_sign.str.contains("車位", na=False)
-    avgCarPrice = df_all[condition]["total_price_NTD"].sum() / carCount
+    avgCarPrice = df_all["the_berth_total_price_NTD"].sum() / carCount
     print("平均車位總價元: ", avgCarPrice)
 
     count = pd.DataFrame(data={"總件數" : [totCount], "總車位數" : [carCount], "平均總價元" : [avgPrice], "平均車位總價元" : [avgCarPrice]})
